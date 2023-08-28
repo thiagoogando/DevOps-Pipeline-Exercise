@@ -1,0 +1,13 @@
+apiVersion: v1 
+kind: Service
+metadata:
+  namespace: namespace-v1
+  name: py-svc
+spec:
+  selector:
+    type: python
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30080
+  type: NodePort

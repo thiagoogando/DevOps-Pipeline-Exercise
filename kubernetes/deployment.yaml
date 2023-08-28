@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: namespace-v1
+  name: pythondp
+  labels:
+    app: py-app
+    type: python
+spec:
+  template:
+    metadata:
+      name: py-pod 
+      labels:
+        app: py-app
+        type: python
+    spec:
+      containers:
+        - name: py-container
+          image: pyteste:1.2
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+  selector:
+    matchLabels:
+      type: python
+  replicas: 2
